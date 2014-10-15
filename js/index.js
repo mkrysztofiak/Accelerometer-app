@@ -10,7 +10,7 @@ var application = {
         this.startWatch();
         console.log('device is ready');
     },
-    startWath: function () {
+    startWatch: function () {
         var options = {frequency: 3000};
         watchID = navigator.accelerometer.watchAcceleration(this.onSuccess, this.onError, options);
     },
@@ -31,5 +31,15 @@ var application = {
     },
     onError: function () {
         alert('onError!');
+    },
+    sendSMS: function() {
+        $("#btnDefaultSMS").click(function(){
+            var number = $("#numberTxt").val();
+            var message = $("#messageTxt").val();
+            var intent = ""; //leave empty for sending sms using default intent
+            var success = function () { alert('Message sent successfully'); };
+            var error = function (e) { alert('Message Failed:' + e); };
+            sms.send(number, message, intent, success, error);
+        });
     }
 };
