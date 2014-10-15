@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Acceleration Example</title>
+
+        <script src="phonegap.js"></script>
+        <script src="js/lib/jquery/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf-8">
+
+            // The watch id references the current `watchAcceleration`
+            var watchID = null;
+
+            // Wait for PhoneGap to load
+            //
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+            // PhoneGap is ready
+            //
+            function onDeviceReady() {
+                startWatch();
+                console.log('device is ready');
+            }
+
+            // Start watching the acceleration
+            //
+            function startWatch() {
+
+                // Update acceleration every 3 seconds
+                var options = {frequency: 3000};
+
+                watchID = navigator.accelerometer.watchAcceleration(onSuccessWatch, onErrorWatch, options);
+            }
+
+            // Stop watching the acceleration
+            //
+            function stopWatch() {
+                if (watchID) {
+                    navigator.accelerometer.clearWatch(watchID);
+                    watchID = null;
+                    var element = document.getElementById('accelerometer');
+                    element.innerHTML = 'Stopped;'
+                }
+            }
+
+            // onSuccess: Get a snapshot of the current acceleration
+            //
+            function onSuccessWatch(acceleration) {
+                var int = setInterval(function() {
+                    navigator.accelerometer.getCurrentAcceleration(function (acceleration) {
+                        var element = document.getElementById('accelerometer');
+                        element.innerHTML = 'Acceleration X: ' + acceleration.x + '<br />' +
+                                'Acceleration Y: ' + acceleration.y + '<br />' +
+                                'Acceleration Z: ' + acceleration.z + '<br />' +
+                                'Timestamp: ' + acceleration.timestamp + '<br />';
+
+                    }), function () {
+                        alert('onError!');
+                        clearInterval(int);
+                    };
+                }, 1500);
+            }
+
+            // onError: Failed to get the acceleration
+            //
+            function onErrorWatch() {
+                alert('onErrorWatch!');
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id="accelerometer">Waiting for accelerometer...</div>
+        <button onclick="stopWatch();">Stop Watching</button>
+        <button onclick="startWatch();">Start Watching</button>
+    </body>
+</html>

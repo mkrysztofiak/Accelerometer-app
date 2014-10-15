@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.phhonegap.comfitura.accelerometer"
+        versionCode = "10" 
+        version     = "1.0.0" >
+
+    <name>Accelerometer</name>
+
+    <gap:plugin name="org.apache.cordova.device-motion" version="0.1.0" />
+    <gap:plugin name="tr.bel.mamak.sms_plagin" version="0.1.0" />
+
+    <feature name="debug-server" required="true">
+        <param name="domain" value="http://debug.build.phonegap.com"/>
+        <param name="key" value="accelerometerappdebugtestcmf"/>
+    </feature>
+
+    <author href="http://comfitura.pl" email="mateusz@comfitura.pl"></author>
+    
+    <gap:platform name="android" />
+    
+    <preference name="phonegap-version" value="3.5.0" />
+    <preference name="orientation" value="landscape" />
+    <preference name="fullscreen" value="false" />
+
+</widget>
