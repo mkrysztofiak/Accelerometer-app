@@ -8,6 +8,7 @@ var application = {
     },
     onDeviceReady: function () {
         this.startWatch();
+        this.sendSMS();
         console.log('device is ready');
     },
     startWatch: function () {
@@ -18,11 +19,11 @@ var application = {
         if (this.watchID) {
             navigator.accelerometer.clearWatch(this.watchID);
             this.watchID = null;
-            $('#accelerometer').html('Stopped');
+            jQuery('#accelerometer').html('Stopped');
         }
     },
     onSuccess: function (acceleration) {
-        $('#accelerometer').html(
+        jQuery('#accelerometer').html(
                 'Acceleration X: ' + acceleration.x + '<br />' +
                 'Acceleration Y: ' + acceleration.y + '<br />' +
                 'Acceleration Z: ' + acceleration.z + '<br />' +
@@ -33,9 +34,9 @@ var application = {
         alert('onError!');
     },
     sendSMS: function() {
-        $("#btnDefaultSMS").click(function(){
-            var number = $("#numberTxt").val();
-            var message = $("#messageTxt").val();
+        jQuery("#btnDefaultSMS").click(function(){
+            var number = jQuery("#numberTxt").val();
+            var message = jQuery("#messageTxt").val();
             var intent = ""; //leave empty for sending sms using default intent
             var success = function () { alert('Message sent successfully'); };
             var error = function (e) { alert('Message Failed:' + e); };
