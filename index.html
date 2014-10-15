@@ -45,7 +45,7 @@
             // onSuccess: Get a snapshot of the current acceleration
             //
             function onSuccessWatch(acceleration) {
-                var int = setInterval(function() {
+//                var int = setInterval(function() {
                     navigator.accelerometer.getCurrentAcceleration(function (acceleration) {
                         var element = document.getElementById('accelerometer');
                         element.innerHTML = 'Acceleration X: ' + acceleration.x + '<br />' +
@@ -55,9 +55,9 @@
 
                     }), function () {
                         alert('onError!');
-                        clearInterval(int);
+//                        clearInterval(int);
                     };
-                }, 1500);
+//                }, 1500);
             }
 
             // onError: Failed to get the acceleration
