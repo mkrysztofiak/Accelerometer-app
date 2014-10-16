@@ -7,8 +7,8 @@ var application = {
         document.addEventListener('deviceready', this.onDeviceReady, true);
     },
     onDeviceReady: function () {
-        this.sendSMS();
-        this.startWatch();
+        application.sendSMS();
+        application.startWatch();
     },
     startWatch: function () {
         var options = {frequency: 250};
