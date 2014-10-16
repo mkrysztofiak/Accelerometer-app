@@ -7,9 +7,8 @@ var application = {
         document.addEventListener('deviceready', this.onDeviceReady, true);
     },
     onDeviceReady: function () {
-        this.startWatch();
         this.sendSMS();
-        alert('on device ready');
+        this.startWatch();
     },
     startWatch: function () {
         var options = {frequency: 100};
@@ -25,7 +24,7 @@ var application = {
     onSuccess: function (acceleration) {
         setInterval(function () {
             var contWidth = parseInt($('#ballContainer').width());
-            var newBallLeft = parseInt($('#ball').css('left')) + acceleration.y;
+            var newBallLeft = parseInt($('#ball').css('left')) + (acceleration.y * 50);
             if (newBallLeft < contWidth && newBallLeft > 0) {
                 console.log(newBallLeft);
                 $('#ball').animate({
