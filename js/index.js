@@ -25,7 +25,7 @@ var application = {
         var contWidth = parseInt($('#ballContainer').width());
         var newBallLeft = parseInt($('#ball').css('left')) + (acceleration.y * 20);
         if (newBallLeft < contWidth && newBallLeft > 0) {
-            $('#ball').animate({
+            $('#ball').stop().animate({
                 left: newBallLeft
             }, 50);
         }
