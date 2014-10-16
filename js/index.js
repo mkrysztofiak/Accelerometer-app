@@ -19,11 +19,11 @@ var application = {
         if (this.watchID) {
             navigator.accelerometer.clearWatch(this.watchID);
             this.watchID = null;
-            jQuery('#accelerometer').html('Stopped');
+            $('#accelerometer').html('Stopped');
         }
     },
     onSuccess: function (acceleration) {
-        jQuery('#accelerometer').html(
+        $('#accelerometer').html(
                 'Acceleration X: ' + acceleration.x + '<br />' +
                 'Acceleration Y: ' + acceleration.y + '<br />' +
                 'Acceleration Z: ' + acceleration.z + '<br />' +
@@ -34,9 +34,9 @@ var application = {
         alert('onError!');
     },
     sendSMS: function() {
-        jQuery("#btnDefaultSMS").click(function(){
-            var number = jQuery("#numberTxt").val();
-            var message = jQuery("#messageTxt").val();
+        $("#btnDefaultSMS").click(function(){
+            var number = $("#numberTxt").val();
+            var message = $("#messageTxt").val();
             var intent = ""; //leave empty for sending sms using default intent
             var success = function () { alert('Message sent successfully'); };
             var error = function (e) { alert('Message Failed:' + e); };
