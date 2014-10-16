@@ -8,19 +8,6 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             application.initialize();
-
-            setInterval(function () {
-                var acceleration = {};
-                acceleration.y = Math.random() * 10;
-                var contWidth = parseInt($('#ballContainer').width());
-                var newBallLeft = parseInt($('#ball').css('left')) + acceleration.y;
-                if (newBallLeft < contWidth && newBallLeft > 0) {
-                    console.log(newBallLeft);
-                    $('#ball').animate({
-                        left: newBallLeft
-                    }, 100);
-                }
-            }, 100);
         </script>
     </head>
     <body>

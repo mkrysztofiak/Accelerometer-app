@@ -24,11 +24,12 @@ var application = {
     },
     onSuccess: function (acceleration) {
         setInterval(function () {
-            if ((parseInt($('#ball').css('left')) + acceleration.y) < 100
-                    && (parseInt($('#ball').css('left')) + acceleration.y) > 0) {
-                console.log($('#ball').css('left'));
+            var contWidth = parseInt($('#ballContainer').width());
+            var newBallLeft = parseInt($('#ball').css('left')) + acceleration.y;
+            if (newBallLeft < contWidth && newBallLeft > 0) {
+                console.log(newBallLeft);
                 $('#ball').animate({
-                    left: (parseInt($('#ball').css('left')) + acceleration.y) + '%'
+                    left: newBallLeft
                 }, 100);
             }
         }, 100);
