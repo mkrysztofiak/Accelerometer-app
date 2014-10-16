@@ -40,9 +40,7 @@ var application = {
         alert('onError!');
     },
     sendSMS: function () {
-        alert('send SMS');
         $("#btnDefaultSMS").click(function () {
-            alert('btn clicked');
             var number = $("#numberTxt").val();
             var message = $("#messageTxt").val();
             var intent = ""; //leave empty for sending sms using default intent
