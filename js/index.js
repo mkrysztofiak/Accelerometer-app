@@ -7,9 +7,9 @@ var application = {
         document.addEventListener('deviceready', this.onDeviceReady, true);
     },
     onDeviceReady: function () {
-        alert('on device ready')
         this.startWatch();
         this.sendSMS();
+        alert('on device ready');
     },
     startWatch: function () {
         var options = {frequency: 100};
@@ -23,6 +23,13 @@ var application = {
         }
     },
     onSuccess: function (acceleration) {
+        setInterval(function () {
+            if((parseInt($('#ball').css('left')) + acceleration.y) < 100
+                    && (parseInt($('#ball').css('left')) + acceleration.y) > 0)
+            $('#ball').animate({
+                left: acceleration.y + '%'
+            }, 100);
+        }, 100);
         $('#accelerometer').html(
                 'Acceleration X: ' + acceleration.x + '<br />' +
                 'Acceleration Y: ' + acceleration.y + '<br />' +
@@ -33,15 +40,19 @@ var application = {
     onError: function () {
         alert('onError!');
     },
-    sendSMS: function() {
-        alert('send SMS')
-        $("#btnDefaultSMS").click(function(){
+    sendSMS: function () {
+        alert('send SMS');
+        $("#btnDefaultSMS").click(function () {
             alert('btn clicked');
             var number = $("#numberTxt").val();
             var message = $("#messageTxt").val();
             var intent = ""; //leave empty for sending sms using default intent
-            var success = function () { alert('Message sent successfully'); };
-            var error = function (e) { alert('Message Failed:' + e); };
+            var success = function () {
+                alert('Message sent successfully');
+            };
+            var error = function (e) {
+                alert('Message Failed:' + e);
+            };
             sms.send(number, message, intent, success, error);
         });
     }
