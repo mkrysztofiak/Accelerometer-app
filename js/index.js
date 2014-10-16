@@ -22,16 +22,14 @@ var application = {
         }
     },
     onSuccess: function (acceleration) {
-        setInterval(function () {
-            var contWidth = parseInt($('#ballContainer').width());
-            var newBallLeft = parseInt($('#ball').css('left')) + (acceleration.y * 50);
-            if (newBallLeft < contWidth && newBallLeft > 0) {
-                $('#ball').css('left', newBallLeft)
+        var contWidth = parseInt($('#ballContainer').width());
+        var newBallLeft = parseInt($('#ball').css('left')) + (acceleration.y * 50);
+        if (newBallLeft < contWidth && newBallLeft > 0) {
+            $('#ball').css('left', newBallLeft)
 //                $('#ball').animate({
 //                    left: newBallLeft
 //                }, 200);
-            }
-        }, 250);
+        }
         $('#accelerometer').html(
 //                'Acceleration X: ' + acceleration.x + '<br />' +
                 'Acceleration Y: ' + acceleration.y// + '<br />' +
