@@ -11,7 +11,7 @@ var application = {
         this.startWatch();
     },
     startWatch: function () {
-        var options = {frequency: 100};
+        var options = {frequency: 250};
         this.watchID = navigator.accelerometer.watchAcceleration(this.onSuccess, this.onError, options);
     },
     stopWatch: function () {
@@ -26,18 +26,17 @@ var application = {
             var contWidth = parseInt($('#ballContainer').width());
             var newBallLeft = parseInt($('#ball').css('left')) + (acceleration.y * 50);
             if (newBallLeft < contWidth && newBallLeft > 0) {
-                console.log(newBallLeft);
                 $('#ball').animate({
                     left: newBallLeft
-                }, 100);
+                }, 200);
             }
-        }, 100);
-//        $('#accelerometer').html(
+        }, 250);
+        $('#accelerometer').html(
 //                'Acceleration X: ' + acceleration.x + '<br />' +
-//                'Acceleration Y: ' + acceleration.y + '<br />' +
+                'Acceleration Y: ' + acceleration.y// + '<br />' +
 //                'Acceleration Z: ' + acceleration.z + '<br />' +
 //                'Timestamp: ' + acceleration.timestamp + '<br />'
-//                );
+                );
     },
     onError: function () {
         alert('onError!');
