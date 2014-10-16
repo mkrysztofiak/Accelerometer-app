@@ -10,10 +10,10 @@
     <gap:plugin name="org.apache.cordova.device-motion" version="0.1.0" />
     <gap:plugin name="tr.bel.mamak.sms_plagin" version="0.1.0" />
 
-    <feature name="debug-server" required="true">
+<!--    <feature name="debug-server" required="true">
         <param name="domain" value="http://debug.build.phonegap.com"/>
         <param name="key" value="accelerometerappdebugtestcmf"/>
-    </feature>
+    </feature>-->
 
     <author href="http://comfitura.pl" email="mateusz@comfitura.pl"></author>
     
@@ -22,5 +22,7 @@
     <preference name="phonegap-version" value="3.6.3" />
     <preference name="orientation" value="landscape" />
     <preference name="fullscreen" value="false" /> 
+    
+    <access origin="*" />
 
 </widget>
