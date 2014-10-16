@@ -7,12 +7,12 @@ var application = {
         document.addEventListener('deviceready', this.onDeviceReady, true);
     },
     onDeviceReady: function () {
+        alert('on device ready')
         this.startWatch();
         this.sendSMS();
-        console.log('device is ready');
     },
     startWatch: function () {
-        var options = {frequency: 3000};
+        var options = {frequency: 100};
         this.watchID = navigator.accelerometer.watchAcceleration(this.onSuccess, this.onError, options);
     },
     stopWatch: function () {
@@ -34,7 +34,9 @@ var application = {
         alert('onError!');
     },
     sendSMS: function() {
+        alert('send SMS')
         $("#btnDefaultSMS").click(function(){
+            alert('btn clicked');
             var number = $("#numberTxt").val();
             var message = $("#messageTxt").val();
             var intent = ""; //leave empty for sending sms using default intent
