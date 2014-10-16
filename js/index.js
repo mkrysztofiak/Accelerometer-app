@@ -24,18 +24,20 @@ var application = {
     },
     onSuccess: function (acceleration) {
         setInterval(function () {
-            if((parseInt($('#ball').css('left')) + acceleration.y) < 100
-                    && (parseInt($('#ball').css('left')) + acceleration.y) > 0)
-            $('#ball').animate({
-                left: acceleration.y + '%'
-            }, 100);
+            if ((parseInt($('#ball').css('left')) + acceleration.y) < 100
+                    && (parseInt($('#ball').css('left')) + acceleration.y) > 0) {
+                console.log($('#ball').css('left'));
+                $('#ball').animate({
+                    left: (parseInt($('#ball').css('left')) + acceleration.y) + '%'
+                }, 100);
+            }
         }, 100);
-        $('#accelerometer').html(
-                'Acceleration X: ' + acceleration.x + '<br />' +
-                'Acceleration Y: ' + acceleration.y + '<br />' +
-                'Acceleration Z: ' + acceleration.z + '<br />' +
-                'Timestamp: ' + acceleration.timestamp + '<br />'
-                );
+//        $('#accelerometer').html(
+//                'Acceleration X: ' + acceleration.x + '<br />' +
+//                'Acceleration Y: ' + acceleration.y + '<br />' +
+//                'Acceleration Z: ' + acceleration.z + '<br />' +
+//                'Timestamp: ' + acceleration.timestamp + '<br />'
+//                );
     },
     onError: function () {
         alert('onError!');

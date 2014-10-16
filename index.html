@@ -8,6 +8,19 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             application.initialize();
+
+            setInterval(function () {
+                var acceleration = {};
+                acceleration.y = Math.random() * 10;
+                var contWidth = parseInt($('#ballContainer').width());
+                var newBallLeft = parseInt($('#ball').css('left')) + acceleration.y;
+                if (newBallLeft < contWidth && newBallLeft > 0) {
+                    console.log(newBallLeft);
+                    $('#ball').animate({
+                        left: newBallLeft
+                    }, 100);
+                }
+            }, 100);
         </script>
     </head>
     <body>
@@ -17,6 +30,7 @@
         <div id="accelerometer">Waiting for accelerometer...</div>
         <button onclick="application.stopWatch();">Stop Watching</button>
         <button onclick="application.startWatch();">Start Watching</button>
+        <button onclick="application.sendSMS();">Prepare sendSMS</button>
         <hr>
         <input name="" id="numberTxt" placeholder="Enter mobile number" value="" type="tel" />
         <br/>
