@@ -26,9 +26,10 @@ var application = {
             var contWidth = parseInt($('#ballContainer').width());
             var newBallLeft = parseInt($('#ball').css('left')) + (acceleration.y * 50);
             if (newBallLeft < contWidth && newBallLeft > 0) {
-                $('#ball').animate({
-                    left: newBallLeft
-                }, 200);
+                $('#ball').css('left', newBallLeft)
+//                $('#ball').animate({
+//                    left: newBallLeft
+//                }, 200);
             }
         }, 250);
         $('#accelerometer').html(
