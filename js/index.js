@@ -13,7 +13,7 @@ var application = {
     },
     startWatch: function () {
         var options = {frequency: 3000};
-        watchID = navigator.accelerometer.watchAcceleration(this.onSuccess, this.onError, options);
+        this.watchID = navigator.accelerometer.watchAcceleration(this.onSuccess, this.onError, options);
     },
     stopWatch: function () {
         if (this.watchID) {
