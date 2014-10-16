@@ -23,15 +23,15 @@ var application = {
     },
     onSuccess: function (acceleration) {
         var contWidth = parseInt($('#ballContainer').width());
-        var newBallLeft = parseInt($('#ball').css('left')) + (acceleration.y * 20);
+        var newBallLeft = parseInt($('#ball').css('left')) + (Math.round(acceleration.y * 3));
         if (newBallLeft < contWidth && newBallLeft > 0) {
             $('#ball').stop().animate({
                 left: newBallLeft
             }, 50);
         }
-        $('#accelerometer').html(
+        $('#accelerometer').html(''
 //                'Acceleration X: ' + acceleration.x + '<br />' +
-                'Acceleration Y: ' + acceleration.y// + '<br />' +
+//                'Acceleration Y: ' + acceleration.y// + '<br />' +
 //                'Acceleration Z: ' + acceleration.z + '<br />' +
 //                'Timestamp: ' + acceleration.timestamp + '<br />'
                 );
